@@ -23,18 +23,18 @@ createKeyPair.get('/', function(req, res){
   
   var keyPair = {'secret': secret_key, 'public': public_key};
   
-  // request.get({
-  //     url: 'https://horizon-testnet.stellar.org/friendbot/',
-  //     qs: { addr: public_key },
-  //     json: true
-  //   }, function(error, response, body) {
-  //     if (error || response.statusCode !== 200) {
-  //       console.error('ERROR!', error || body);
-  //     }
-  //     else {
-  //       console.log('SUCCESS! You have a new account :)\n', body);
-  //     }
-  // });    
+  request.get({
+      url: 'https://horizon-testnet.stellar.org/friendbot/',
+      qs: { addr: public_key },
+      json: true
+    }, function(error, response, body) {
+      if (error || response.statusCode !== 200) {
+        console.error('ERROR!', error || body);
+      }
+      else {
+        console.log('SUCCESS! You have a new account :)\n', body);
+      }
+  });    
   
   res.contentType('application/json');
   res.end(JSON.stringify(keyPair));
